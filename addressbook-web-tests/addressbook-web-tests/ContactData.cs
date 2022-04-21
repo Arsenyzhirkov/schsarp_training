@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 //"ARS", "ARS", "ARS", "ARSENY", "123","123","123","333333","83333333333","123","123", "1@mail.ru","1","January","2020", "1", "January", "2020","123","123","123"
 namespace WebAddressbookContactTest
 {
-    class ContactData
+    public class ContactData
     {
         private string firstname;
         private string middlename = "";
