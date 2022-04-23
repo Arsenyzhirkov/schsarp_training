@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//string firstname, string middlename, string lastname, string nickname, string title, string company, string address, string home,
-//string mobile, string work, string fax, string email, string bday, string bmonth, string byear, string aday, string amonth, string ayear, string address2, string phone2, string notes
-//"ARS", "ARS", "ARS", "ARSENY", "123","123","123","333333","83333333333","123","123", "1@mail.ru","1","January","2020", "1", "January", "2020","123","123","123"
-namespace WebAddressbookContactTest
+
+
+namespace WebAddressbookTests
 {
     public class ContactData
     {
@@ -22,12 +21,6 @@ namespace WebAddressbookContactTest
         private string work = "";
         private string fax = "";
         private string email = "";
-        private string bday = "";
-        private string bmonth = "";
-        private string byear = "";
-        private string aday = "";
-        private string amonth = "";
-        private string ayear = "";
         private string address2 = "";
         private string phone2 = "";
         private string notes = "";
@@ -169,72 +162,6 @@ namespace WebAddressbookContactTest
             set
             {
                 email = value;
-            }
-        }
-        public string Bday
-        {
-            get
-            {
-                return bday;
-            }
-            set
-            {
-                bday = value;
-            }
-        }
-        public string Bmonth
-        {
-            get
-            {
-                return bmonth;
-            }
-            set
-            {
-                bmonth = value;
-            }
-        }
-        public string Byear
-        {
-            get
-            {
-                return byear;
-            }
-            set
-            {
-                byear = value;
-            }
-        }
-        public string Aday
-        {
-            get
-            {
-                return aday;
-            }
-            set
-            {
-                aday = value;
-            }
-        }
-        public string Amonth
-        {
-            get
-            {
-                return amonth;
-            }
-            set
-            {
-                amonth = value;
-            }
-        }
-        public string Ayear
-        {
-            get
-            {
-                return ayear;
-            }
-            set
-            {
-                ayear = value;
             }
         }
         public string Address2

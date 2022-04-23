@@ -7,18 +7,15 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
-namespace WebAddressbookContactTest
+namespace WebAddressbookTests
 {
     [TestFixture]
     public class ContactCreationTests : TestBaseContact
     {
-        
+
         [Test]
         public void ContactCreationTest()
         {
-            OpenHomePage();
-            Login(new AccountDataContact("admin","secret"));
-            GoToContactsPage();
             ContactData contact = new ContactData("ARSENY");
             contact.Middlename = "ARS";
             contact.Lastname = "ZHIRKOV";
@@ -31,18 +28,34 @@ namespace WebAddressbookContactTest
             contact.Work = "123";
             contact.Fax = "123";
             contact.Email = "1@mail.ru";
-            contact.Bday = "1";
-            contact.Bmonth = "January";
-            contact.Byear = "2020";
-            contact.Aday = "1";
-            contact.Amonth = "January";
-            contact.Ayear = "2020";
             contact.Address2 = "123";
             contact.Phone2 = "123";
             contact.Notes = "123";
-            FillContactForm(contact);
-            SubmitContactCreation();
-            ReturnToContactPage();
+
+            app.Contacts.Create(contact);
+        }
+
+        [Test]
+
+        public void EmptyContactCreationTest()
+        {
+            ContactData contact = new ContactData("");
+            contact.Middlename = "";
+            contact.Lastname = "";
+            contact.Nickname = "";
+            contact.Title = "";
+            contact.Company = "";
+            contact.Address = "";
+            contact.Home = "";
+            contact.Mobile = "";
+            contact.Work = "";
+            contact.Fax = "";
+            contact.Email = "";
+            contact.Address2 = "";
+            contact.Phone2 = "";
+            contact.Notes = "";
+
+            app.Contacts.Create(contact);
         }
     }
 }

@@ -65,8 +65,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="appmanager\ContactAppicationManager.cs" />
+    <Compile Include="appmanager\ContactHelper.cs" />
+    <Compile Include="appmanager\ContactHelperBase.cs" />
+    <Compile Include="appmanager\ContactLoginHelper.cs" />
+    <Compile Include="appmanager\ContactNavigationHelper.cs" />
     <Compile Include="model\AccountData.cs" />
-    <Compile Include="model\AcountDataContact.cs" />
     <Compile Include="appmanager\ApplicationManager.cs" />
     <Compile Include="model\ContactData.cs" />
     <Compile Include="model\GroupData.cs" />
