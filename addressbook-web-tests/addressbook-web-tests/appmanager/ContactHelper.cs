@@ -10,9 +10,9 @@ using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbookTests
 {
-    public class ContactHelper : ContactHelperBase
+    public class ContactHelper : HelperBase
     {
-        public ContactHelper(ContactApplicationManager manager)
+        public ContactHelper(ApplicationManager manager)
             : base(manager)
         {
         }

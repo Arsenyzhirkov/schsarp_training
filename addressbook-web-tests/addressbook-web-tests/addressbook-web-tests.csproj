@@ -65,11 +65,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="appmanager\ContactAppicationManager.cs" />
     <Compile Include="appmanager\ContactHelper.cs" />
-    <Compile Include="appmanager\ContactHelperBase.cs" />
-    <Compile Include="appmanager\ContactLoginHelper.cs" />
-    <Compile Include="appmanager\ContactNavigationHelper.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="appmanager\ApplicationManager.cs" />
     <Compile Include="model\ContactData.cs" />
@@ -80,7 +76,6 @@
     <Compile Include="appmanager\LoginHelper.cs" />
     <Compile Include="appmanager\NavigationHelper.cs" />
     <Compile Include="tests\TestBase.cs" />
-    <Compile Include="tests\TestBaseContact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tests\GroupCreationTests.cs" />
     <Compile Include="tests\ContactCreationTest.cs" />
