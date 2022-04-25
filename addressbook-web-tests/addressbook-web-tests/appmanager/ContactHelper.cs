@@ -7,14 +7,18 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using System.Text.RegularExpressions;
 
 namespace WebAddressbookTests
 {
     public class ContactHelper : HelperBase
     {
+        public bool acceptNextAlert = true;
+
         public ContactHelper(ApplicationManager manager)
             : base(manager)
         {
+
         }
 
 
@@ -26,7 +30,24 @@ namespace WebAddressbookTests
             ReturnToContactPage();
             return this;
         }
+        public ContactHelper Modify(int v, ContactData newData)
+        {
+            SelectContact();
+            InitContactModification();
+            FillContactForm(newData);
+            SubmitContactModification();
+            ReturnToContactPage();
+            return this;
+        }
 
+        public ContactHelper Remove(int p)
+        {
+            SelectContact();
+            DeleteContact();
+            Confirm();
+            ReturnToContactPage();
+            return this;
+        }
 
         public ContactHelper FillContactForm(ContactData contact)
         {
@@ -86,6 +107,80 @@ namespace WebAddressbookTests
         public ContactHelper ReturnToContactPage()
         {
             driver.FindElement(By.LinkText("Logout")).Click();
+            return this;
+        }
+        public ContactHelper SelectContact()
+        {
+            driver.FindElement(By.Id("16")).Click();
+            return this;
+        }
+        public ContactHelper DeleteContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            return this;
+        }
+        public ContactHelper Confirm()
+        {
+            Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
+            return this;
+        }
+        
+        public bool IsElementPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
+        public bool IsAlertPresent()
+        {
+            try
+            {
+                driver.SwitchTo().Alert();
+                return true;
+            }
+            catch (NoAlertPresentException)
+            {
+                return false;
+            }
+        }
+
+        public string CloseAlertAndGetItsText()
+        {
+            try
+            {
+                IAlert alert = driver.SwitchTo().Alert();
+                string alertText = alert.Text;
+                if (acceptNextAlert)
+                {
+                    alert.Accept();
+                }
+                else
+                {
+                    alert.Dismiss();
+                }
+                return alertText;
+            }
+            finally
+            {
+                acceptNextAlert = true;
+            }
+        }
+        public ContactHelper SubmitContactModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
+        public ContactHelper InitContactModification()
+        {
+            driver.FindElement(By.Name("edit")).Click();
             return this;
         }
     }

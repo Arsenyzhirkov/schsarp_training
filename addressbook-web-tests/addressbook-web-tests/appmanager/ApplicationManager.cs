@@ -81,19 +81,3 @@ namespace WebAddressbookTests
         }
     }
 }
-
-
-
-
-
-
-
-
-
-//driver = new FirefoxDriver();
-//baseURL = "http://localhost";
-//verificationErrors = new StringBuilder();
-
-//loginHelper = new LoginHelper(driver);
-//navigator = new NavigationHelper(driver, baseURL);
-//groupHelper = new GroupHelper(driver);
