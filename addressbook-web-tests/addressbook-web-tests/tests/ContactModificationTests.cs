@@ -14,21 +14,21 @@ namespace WebAddressbookTests
         [Test]
         public void ContactModificationTest()
         {
-            ContactData newData = new ContactData("ARSENY");
-            newData.Middlename = "ARS";
-            newData.Lastname = "ZHIRKOV";
-            newData.Nickname = "ARSENY";
-            newData.Title = "123";
-            newData.Company = "123";
-            newData.Address = "123";
-            newData.Home = "333333";
-            newData.Mobile = "83333333333";
-            newData.Work = "123";
-            newData.Fax = "123";
-            newData.Email = "1@mail.ru";
-            newData.Address2 = "123";
-            newData.Phone2 = "123";
-            newData.Notes = "123";
+            ContactData newData = new ContactData("ARSENY1");
+            newData.Middlename = "ARS1";
+            newData.Lastname = "ZHIRKOV1";
+            newData.Nickname = "ARSENY1";
+            newData.Title = "1234";
+            newData.Company = "1234";
+            newData.Address = "1234";
+            newData.Home = "333334";
+            newData.Mobile = "83333333334";
+            newData.Work = "124";
+            newData.Fax = "124";
+            newData.Email = "2@mail.ru";
+            newData.Address2 = "124";
+            newData.Phone2 = "124";
+            newData.Notes = "124";
 
             app.Contacts.Modify(1, newData);
         }

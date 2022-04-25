@@ -30,7 +30,7 @@ namespace WebAddressbookTests
             ReturnToContactPage();
             return this;
         }
-        public ContactHelper Modify(int v, ContactData newData)
+        public ContactHelper Modify(int p, ContactData newData)
         {
             SelectContact();
             InitContactModification();
@@ -180,7 +180,7 @@ namespace WebAddressbookTests
 
         public ContactHelper InitContactModification()
         {
-            driver.FindElement(By.Name("edit")).Click();
+            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
             return this;
         }
     }
