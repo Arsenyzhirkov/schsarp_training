@@ -32,7 +32,7 @@ namespace WebAddressbookTests
         }
         public ContactHelper Modify(int p, ContactData newData)
         {
-            SelectContact();
+            SelectContact(2);
             InitContactModification();
             FillContactForm(newData);
             SubmitContactModification();
@@ -42,7 +42,7 @@ namespace WebAddressbookTests
 
         public ContactHelper Remove(int p)
         {
-            SelectContact();
+            SelectContact(2);
             DeleteContact();
             Confirm();
             ReturnToContactPage();
@@ -109,9 +109,9 @@ namespace WebAddressbookTests
             driver.FindElement(By.LinkText("Logout")).Click();
             return this;
         }
-        public ContactHelper SelectContact()
+        public ContactHelper SelectContact(int index)
         {
-            driver.FindElement(By.Id("16")).Click();
+            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[" + index + "]/td/input")).Click();
             return this;
         }
         public ContactHelper DeleteContact()
