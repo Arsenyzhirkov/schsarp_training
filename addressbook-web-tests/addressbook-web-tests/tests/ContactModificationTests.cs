@@ -24,13 +24,13 @@ namespace WebAddressbookTests
             newData.Home = "333334";
             newData.Mobile = "83333333334";
             newData.Work = "124";
-            newData.Fax = "124";
-            newData.Email = "2@mail.ru";
-            newData.Address2 = "124";
-            newData.Phone2 = "124";
-            newData.Notes = "124";
+            newData.Fax = null;
+            newData.Email = null;
+            newData.Address2 = null;
+            newData.Phone2 = null;
+            newData.Notes = null;
 
-            app.Contacts.Modify(1, newData);
+            app.Contacts.Modify(2, newData);
         }
     }
 }

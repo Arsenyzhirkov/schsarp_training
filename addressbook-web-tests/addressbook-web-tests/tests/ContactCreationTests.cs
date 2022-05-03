@@ -16,23 +16,23 @@ namespace WebAddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-            ContactData newData = new ContactData("ARSENY");
-            newData.Middlename = "ARS";
-            newData.Lastname = "ZHIRKOV";
-            newData.Nickname = "ARSENY";
-            newData.Title = "123";
-            newData.Company = "123";
-            newData.Address = "123";
-            newData.Home = "333333";
-            newData.Mobile = "83333333333";
-            newData.Work = "123";
-            newData.Fax = "123";
-            newData.Email = "1@mail.ru";
-            newData.Address2 = "123";
-            newData.Phone2 = "123";
-            newData.Notes = "123";
+            ContactData contact = new ContactData("ARSENY");
+            contact.Middlename = "ARS";
+            contact.Lastname = "ZHIRKOV";
+            contact.Nickname = "ARSENY";
+            contact.Title = "123";
+            contact.Company = "123";
+            contact.Address = "123";
+            contact.Home = "333333";
+            contact.Mobile = "83333333333";
+            contact.Work = "123";
+            contact.Fax = "123";
+            contact.Email = "1@mail.ru";
+            contact.Address2 = "123";
+            contact.Phone2 = "123";
+            contact.Notes = "123";
 
-            app.Contacts.Modify(1, newData);
+            app.Contacts.Create(contact);
         }
 
         [Test]
