@@ -32,11 +32,9 @@ namespace WebAddressbookTests
         }
         public ContactHelper Modify(int p, ContactData newData)
         {
-            SelectContact(p);
-            InitContactModification();
+            InitContactModification(p);
             FillContactForm(newData);
             SubmitContactModification();
-            ReturnToContactPage();
             return this;
         }
 
@@ -45,7 +43,6 @@ namespace WebAddressbookTests
             SelectContact(p);
             DeleteContact();
             Confirm();
-            ReturnToContactPage();
             return this;
         }
 
@@ -147,9 +144,9 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper InitContactModification()
+        public ContactHelper InitContactModification(int index)
         {
-            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+            driver.FindElement(By.XPath("//tr[@name=\"entry\"][" + (index + 1) + "]//img[@title=\"Edit\"]")).Click();
             return this;
         }
     }
