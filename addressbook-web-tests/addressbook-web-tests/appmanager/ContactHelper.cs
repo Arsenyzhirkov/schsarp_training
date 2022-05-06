@@ -24,14 +24,14 @@ namespace WebAddressbookTests
 
         public ContactHelper Create(ContactData contact)
         {
-            manager.Navigator.GoToContactsPage();
+            manager.Navigator.AddContactsPage();
             FillContactForm(contact);
             SubmitContactCreation();
-            ReturnToContactPage();
             return this;
         }
         public ContactHelper Modify(int p, ContactData newData)
         {
+            manager.Navigator.GoToContactPage();
             InitContactModification(p);
             FillContactForm(newData);
             SubmitContactModification();
@@ -40,6 +40,7 @@ namespace WebAddressbookTests
 
         public ContactHelper Remove(int p)
         {
+            manager.Navigator.GoToContactPage();
             SelectContact(p);
             DeleteContact();
             Confirm();
