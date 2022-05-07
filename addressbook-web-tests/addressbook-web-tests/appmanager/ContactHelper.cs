@@ -27,23 +27,28 @@ namespace WebAddressbookTests
             manager.Navigator.AddContactsPage();
             FillContactForm(contact);
             SubmitContactCreation();
+            ReturnToContactPage();
             return this;
         }
         public ContactHelper Modify(int p, ContactData newData)
         {
             manager.Navigator.GoToContactPage();
+            CreateEmptyContact();
             InitContactModification(p);
             FillContactForm(newData);
             SubmitContactModification();
+            ReturnToContactPage();
             return this;
         }
 
         public ContactHelper Remove(int p)
         {
             manager.Navigator.GoToContactPage();
+            CreateEmptyContact();
             SelectContact(p);
             DeleteContact();
             Confirm();
+            ReturnToContactPage();
             return this;
         }
 
@@ -91,20 +96,6 @@ namespace WebAddressbookTests
             Assert.IsTrue(Regex.IsMatch(CloseAlertAndGetItsText(), "^Delete 1 addresses[\\s\\S]$"));
             return this;
         }
-        
-        public bool IsElementPresent(By by)
-        {
-            try
-            {
-                driver.FindElement(by);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
-
         public bool IsAlertPresent()
         {
             try
@@ -147,8 +138,22 @@ namespace WebAddressbookTests
 
         public ContactHelper InitContactModification(int index)
         {
-            driver.FindElement(By.XPath("//tr[@name=\"entry\"][" + (index + 1) + "]//img[@title=\"Edit\"]")).Click();
+            driver.FindElement(By.XPath("//tr[@name=\"entry\"][" + (index) + "]//img[@title=\"Edit\"]")).Click();
             return this;
+        }
+        public void CreateEmptyContact()
+        {
+            if (IsContactCreate())
+            {
+                manager.Navigator.AddContactsPage();
+                SubmitContactCreation();
+                manager.Navigator.GoToContactPage();
+            }
+        }
+        public bool IsContactCreate()
+        {
+            return !IsElementPresent(By.Name("entry"));
         }
     }
 }
+
