@@ -33,7 +33,6 @@ namespace WebAddressbookTests
         public ContactHelper Modify(int p, ContactData newData)
         {
             manager.Navigator.GoToContactPage();
-            CreateEmptyContact();
             InitContactModification(p);
             FillContactForm(newData);
             SubmitContactModification();
@@ -44,7 +43,6 @@ namespace WebAddressbookTests
         public ContactHelper Remove(int p)
         {
             manager.Navigator.GoToContactPage();
-            CreateEmptyContact();
             SelectContact(p);
             DeleteContact();
             Confirm();
@@ -141,18 +139,9 @@ namespace WebAddressbookTests
             driver.FindElement(By.XPath("//tr[@name=\"entry\"][" + (index) + "]//img[@title=\"Edit\"]")).Click();
             return this;
         }
-        public void CreateEmptyContact()
-        {
-            if (IsContactCreate())
-            {
-                manager.Navigator.AddContactsPage();
-                SubmitContactCreation();
-                manager.Navigator.GoToContactPage();
-            }
-        }
         public bool IsContactCreate()
         {
-            return !IsElementPresent(By.Name("entry"));
+            return IsElementPresent(By.Name("entry"));
         }
     }
 }
