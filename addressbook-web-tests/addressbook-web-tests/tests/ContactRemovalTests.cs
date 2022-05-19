@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Collections.Generic;
 using NUnit.Framework;
+
 
 namespace WebAddressbookTests
 {
@@ -20,7 +21,15 @@ namespace WebAddressbookTests
                 ContactData contact = new ContactData("ARSENY");
                 app.Contacts.Create(contact);
             }
-            app.Contacts.Remove(2);
+
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
+
+            app.Contacts.Remove(0);
+
+            List<ContactData> newContacts = app.Contacts.GetContactList();
+
+            oldContacts.RemoveAt(1);
+            Assert.AreEqual(oldContacts, newContacts);
         }
     }
 }
