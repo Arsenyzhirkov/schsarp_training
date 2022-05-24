@@ -152,9 +152,9 @@ namespace WebAddressbookTests
 
             foreach (IWebElement element in elements)
             {
-                //IList<IWebElement> cells = element.FindElements(By.TagName("td"));
-                //string firstname = cells[1].Text;
-                //string lastname = cells[2].Text;
+                IList<IWebElement> cells = element.FindElements(By.TagName("td"));
+                string firstname = cells[2].Text;
+                string lastname = cells[1].Text;
                 contacts.Add(new ContactData(element.Text));
             }
             return contacts;

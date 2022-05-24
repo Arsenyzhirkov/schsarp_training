@@ -41,16 +41,17 @@ namespace WebAddressbookTests
             {
                 return true;
             }
-            return Firstname == other.Firstname;
+            return Firstname == (other.Firstname) && Lastname == (other.Lastname);
+
         }
 
         public override int GetHashCode()
         {
-            return Firstname.GetHashCode();
+            return (Firstname+Lastname).GetHashCode();
         }
         public override string ToString()
         {
-            return "firstname=" + Firstname;
+            return "firstname=" + Firstname +"lastname=" +Lastname;
         }
 
         public int CompareTo(ContactData other)
@@ -60,7 +61,8 @@ namespace WebAddressbookTests
             {
                 return 1;
             }
-            return Firstname.CompareTo(other.Firstname);
+            return Firstname.CompareTo(other.Firstname)
+                + Lastname.CompareTo(other.Lastname);
         }
 
 
