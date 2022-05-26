@@ -17,8 +17,8 @@ namespace WebAddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-            ContactData contact = new ContactData("ARSENY");
-            contact.Lastname = "ZHIRKOV";
+            ContactData contact = new ContactData("ARSENY", "ZHIRKOV");
+            //contact.Lastname = "ZHIRKOV";
 
 
             List<ContactData> oldContacts = app.Contacts.GetContactList();
@@ -36,8 +36,8 @@ namespace WebAddressbookTests
 
         public void EmptyContactCreationTest()
         {
-            ContactData contact = new ContactData("");
-            contact.Lastname = "";
+            ContactData contact = new ContactData("", "");
+
 
             List<ContactData> oldContacts = app.Contacts.GetContactList();
 

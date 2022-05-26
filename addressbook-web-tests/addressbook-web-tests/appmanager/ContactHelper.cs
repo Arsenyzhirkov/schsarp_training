@@ -148,14 +148,14 @@ namespace WebAddressbookTests
         {
             List<ContactData> contacts = new List<ContactData>();
             manager.Navigator.GoToContactPage();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr"));
+            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
 
             foreach (IWebElement element in elements)
             {
                 IList<IWebElement> cells = element.FindElements(By.TagName("td"));
                 string firstname = cells[2].Text;
                 string lastname = cells[1].Text;
-                contacts.Add(new ContactData(element.Text));
+                contacts.Add(new ContactData(firstname, lastname));
             }
             return contacts;
         }

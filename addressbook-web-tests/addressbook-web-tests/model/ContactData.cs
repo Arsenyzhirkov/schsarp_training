@@ -26,9 +26,10 @@ namespace WebAddressbookTests
         private string notes = "";
 
 
-        public ContactData(string firstname)
+        public ContactData(string firstname, string lastname)
         {
             this.firstname = firstname;
+            this.lastname = lastname;
         }
 
         public bool Equals(ContactData other)
@@ -47,11 +48,11 @@ namespace WebAddressbookTests
 
         public override int GetHashCode()
         {
-            return (Firstname+Lastname).GetHashCode();
+            return (Firstname + Lastname).GetHashCode();
         }
         public override string ToString()
         {
-            return "firstname=" + Firstname +"lastname=" +Lastname;
+            return "firstname=" + Firstname + "lastname=" + Lastname;
         }
 
         public int CompareTo(ContactData other)
