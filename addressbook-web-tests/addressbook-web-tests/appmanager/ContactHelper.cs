@@ -166,7 +166,7 @@ namespace WebAddressbookTests
                     string lastname = cells[1].Text;
                     contactCache.Add(new ContactData(firstname, lastname)
                     {
-                    //Id = element.FindElement(By.TagName("input")).GetAttribute("value")
+                    Id = element.FindElement(By.TagName("input")).GetAttribute("value")
                     });
                 }
             }
@@ -176,6 +176,7 @@ namespace WebAddressbookTests
 
         public int GetContactCount()
         {
+            manager.Navigator.GoToContactPage();
             return driver.FindElements(By.Name("entry")).Count;
         }
     }
