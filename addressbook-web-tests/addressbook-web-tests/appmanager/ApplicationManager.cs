@@ -15,7 +15,7 @@ namespace WebAddressbookTests
     public class ApplicationManager
     {
         protected IWebDriver driver;
-        protected string baseURL;
+        public string baseURL;
 
         protected LoginHelper loginHelper;
         protected NavigationHelper navigator;
