@@ -78,7 +78,7 @@ namespace WebAddressbookTests
         }
         public ContactHelper SelectContact(int index)
         {
-            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[" + (index+2) + "]/td/input")).Click();
+            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[" + (index + 2) + "]/td/input")).Click();
             return this;
         }
         public ContactHelper DeleteContact()
@@ -147,6 +147,7 @@ namespace WebAddressbookTests
 
         private List<ContactData> contactCache = null;
 
+
         public List<ContactData> GetContactList()
         {
             if (contactCache == null)
@@ -162,7 +163,7 @@ namespace WebAddressbookTests
                     string lastname = cells[1].Text;
                     contactCache.Add(new ContactData(firstname, lastname)
                     {
-                    Id = element.FindElement(By.TagName("input")).GetAttribute("value")
+                        Id = element.FindElement(By.TagName("input")).GetAttribute("value")
                     });
                 }
             }
@@ -176,7 +177,7 @@ namespace WebAddressbookTests
             return driver.FindElements(By.Name("entry")).Count;
         }
 
-        internal ContactData GetContactInformationFromTable(int index)
+        public ContactData GetContactInformationFromTable(int index)
         {
             manager.Navigator.GoToHomePage();
             IList<IWebElement> cells = driver.FindElements(By.Name("entry"))[index]
@@ -193,8 +194,8 @@ namespace WebAddressbookTests
             };
         }
 
-        internal ContactData GetContactInformationFromEditForm(int index)
-        { 
+        public ContactData GetContactInformationFromEditForm(int index)
+        {
             manager.Navigator.GoToHomePage();
             InitContactModification(0);
 
@@ -214,16 +215,33 @@ namespace WebAddressbookTests
                 Address = address,
                 HomePhone = homePhone,
                 MobilePhone = mobilePhone,
-                WorkPhone = workPhone
+                WorkPhone = workPhone,
+                Email= email,
+                Email2 = email2,
+                Email3 = email3
             };
         }
-        
+
         public int GetNumberOfSearchResults()
         {
             manager.Navigator.GoToHomePage();
             string text = driver.FindElement(By.TagName("label")).Text;
             Match m = new Regex(@"\d+").Match(text);
             return Int32.Parse(m.Value);
+        }
+
+
+        public string GetContactInformationFromDetails(int index)
+        {
+        manager.Navigator.GoToHomePage();
+        driver.FindElement(By.XPath("//img[@alt='Details']")).Click();
+        IWebElement element = driver.FindElement(By.Id("content"));
+        return Regex.Replace(element.Text, "[H:M:W: ()\\-]", "");
+        }
+        public string GetContactInformationFromEdit(int index)
+        {
+            ContactData Info = GetContactInformationFromEditForm(index);
+            return (Info.Firstname + Info.Lastname +"\r\n\r\n"+ Info.AllPhones).Trim();
         }
     }
 }
