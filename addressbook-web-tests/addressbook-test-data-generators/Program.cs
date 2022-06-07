@@ -81,16 +81,17 @@ namespace addressbook_test_data_generators
 
                 }
                 else if (format == "json")
-
+                {
                     if (type == "contacts")
                         writeContactsToJsonFile(contacts, writer);
 
                     else if (type == "groups")
                         writeGroupsToJsonFile(groups, writer);
-                    else
-                    {
-                        System.Console.Out.Write("Unrecognized format " + format);
-                    }
+                }
+                else
+                {
+                    System.Console.Out.Write("Unrecognized format " + format);
+                }
                 writer.Close();
             }
 
@@ -170,7 +171,7 @@ namespace addressbook_test_data_generators
 
         static void writeContactsToXmlFile(List<ContactData> contacts, StreamWriter writer)
         {
-            new XmlSerializer(typeof(List<GroupData>)).Serialize(writer, contacts);
+            new XmlSerializer(typeof(List<ContactData>)).Serialize(writer, contacts);
         }
 
 

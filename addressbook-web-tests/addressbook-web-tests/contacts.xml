@@ -1,2 +1,17 @@
-$:CP)MZ@0UC6 QB,$&[3M8?L&,$@4"%QMOT><A
-$6=A'4S3,$ =<!:L@>,$4>O
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfContactData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ContactData>
+    <Firstname>]P,00</Firstname>
+    <Lastname>]</Lastname>
+    <Address>//94</Address>
+    <AllPhones />
+    <AllEmails />
+  </ContactData>
+  <ContactData>
+    <Firstname>&lt;N_]0TM&amp;39VL</Firstname>
+    <Lastname>Qa.H'P</Lastname>
+    <Address>!*)G3&gt;C'0BM4:</Address>
+    <AllPhones />
+    <AllEmails />
+  </ContactData>
+</ArrayOfContactData>
