@@ -21,7 +21,6 @@ namespace WebAddressbookTests
 
         }
 
-
         public ContactHelper Create(ContactData contact)
         {
             manager.Navigator.AddContactsPage();
@@ -237,13 +236,45 @@ namespace WebAddressbookTests
         {
         manager.Navigator.GoToHomePage();
         driver.FindElement(By.XPath("//img[@alt='Details']")).Click();
-        IWebElement element = driver.FindElement(By.Id("content"));
-        return Regex.Replace(element.Text, "[H:M:W: ()\\-]", "");
+        string details  = driver.FindElement(By.Id("content")).Text;
+            return details;
         }
         public string GetContactInformationFromEdit(int index)
         {
             ContactData Info = GetContactInformationFromEditForm(index);
-            return (Info.Firstname + Info.Lastname +"\r\n\r\n"+ Info.AllPhones).Trim();
+
+
+            string information = Info.Firstname + " " + Info.Lastname;
+
+            if (Info.Address != "")
+            {
+                information = information + "\r\n" + Info.Address;
+            }
+            if (Info.HomePhone != "")
+            {
+                information = information + "\r\n\r\nH: " + Info.HomePhone;
+            }
+            if (Info.MobilePhone != "")
+            {
+                information = information + "\r\nM: " + Info.MobilePhone;
+            }
+            if (Info.WorkPhone != "")
+            {
+                information = information + "\r\nW: " + Info.WorkPhone;
+            }
+            if (Info.Email != "")
+            {
+                information = information + "\r\n\r\n" + Info.Email;
+            }
+            if (Info.Email2 !="")
+            {
+                information = information + "\r\n" + Info.Email2;
+            }
+            if (Info.Email3 != "")
+            {
+                information = information + "\r\n" + Info.Email3;
+            }
+            return information;
         }
     }
 }
