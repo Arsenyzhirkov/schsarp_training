@@ -198,15 +198,18 @@ namespace WebAddressbookTests
         public ContactData GetContactInformationFromEditForm(int index)
         {
             manager.Navigator.GoToHomePage();
-            InitContactModification(0);
+            InitContactModification(index);
 
             string firstname = driver.FindElement(By.Name("firstname")).GetAttribute("value");
             string lastname = driver.FindElement(By.Name("lastname")).GetAttribute("value");
+
+
             string address = driver.FindElement(By.Name("address")).GetAttribute("value");
 
             string homePhone = driver.FindElement(By.Name("home")).GetAttribute("value");
             string mobilePhone = driver.FindElement(By.Name("mobile")).GetAttribute("value");
             string workPhone = driver.FindElement(By.Name("work")).GetAttribute("value");
+
             string email = driver.FindElement(By.Name("email")).GetAttribute("value");
             string email2 = driver.FindElement(By.Name("email2")).GetAttribute("value");
             string email3 = driver.FindElement(By.Name("email3")).GetAttribute("value");
@@ -217,6 +220,7 @@ namespace WebAddressbookTests
                 HomePhone = homePhone,
                 MobilePhone = mobilePhone,
                 WorkPhone = workPhone,
+
                 Email= email,
                 Email2 = email2,
                 Email3 = email3
@@ -232,49 +236,50 @@ namespace WebAddressbookTests
         }
 
 
-        public string GetContactInformationFromDetails(int index)
+
+
+
+        internal ContactData GetContactInformationFromDetails(int index)
         {
+            
         manager.Navigator.GoToHomePage();
         driver.FindElement(By.XPath("//img[@alt='Details']")).Click();
-        string details  = driver.FindElement(By.Id("content")).Text;
-            return details;
+        string allContactsInfo = driver.FindElement(By.Id("content")).Text;
+        return new ContactData("", "")
+            {
+                AllContactsInfo = allContactsInfo
+            };
         }
-        public string GetContactInformationFromEdit(int index)
+
+        internal ContactData GetContactInformationFromEdit(int index)
         {
-            ContactData Info = GetContactInformationFromEditForm(index);
+            manager.Navigator.GoToHomePage();
+            InitContactModification(index);
+            string firstname = driver.FindElement(By.Name("firstname")).GetAttribute("value");
+            string lastname = driver.FindElement(By.Name("lastname")).GetAttribute("value");
 
+            string address = driver.FindElement(By.Name("address")).GetAttribute("value");
 
-            string information = Info.Firstname + " " + Info.Lastname;
+            string homePhone = driver.FindElement(By.Name("home")).GetAttribute("value");
+            string mobilePhone = driver.FindElement(By.Name("mobile")).GetAttribute("value");
+            string workPhone = driver.FindElement(By.Name("work")).GetAttribute("value");
 
-            if (Info.Address != "")
+            string email = driver.FindElement(By.Name("email")).GetAttribute("value");
+            string email2 = driver.FindElement(By.Name("email2")).GetAttribute("value");
+            string email3 = driver.FindElement(By.Name("email3")).GetAttribute("value");
+
+            return new ContactData(firstname, lastname)
             {
-                information = information + "\r\n" + Info.Address;
-            }
-            if (Info.HomePhone != "")
-            {
-                information = information + "\r\n\r\nH: " + Info.HomePhone;
-            }
-            if (Info.MobilePhone != "")
-            {
-                information = information + "\r\nM: " + Info.MobilePhone;
-            }
-            if (Info.WorkPhone != "")
-            {
-                information = information + "\r\nW: " + Info.WorkPhone;
-            }
-            if (Info.Email != "")
-            {
-                information = information + "\r\n\r\n" + Info.Email;
-            }
-            if (Info.Email2 !="")
-            {
-                information = information + "\r\n" + Info.Email2;
-            }
-            if (Info.Email3 != "")
-            {
-                information = information + "\r\n" + Info.Email3;
-            }
-            return information;
+
+                Address = address,
+                HomePhone = homePhone,
+                MobilePhone = mobilePhone,
+                WorkPhone = workPhone,
+
+                Email = email,
+                Email2 = email2,
+                Email3 = email3,
+            };
         }
     }
 }
