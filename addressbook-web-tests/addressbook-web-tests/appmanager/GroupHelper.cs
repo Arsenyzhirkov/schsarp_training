@@ -29,7 +29,6 @@ namespace WebAddressbookTests
 
         public GroupHelper Modify(int p, GroupData newData)
         {
-            {
                 manager.Navigator.GoToGroupsPage();
                 SelectGroup(p);
                 InintGroupModification();
@@ -38,15 +37,33 @@ namespace WebAddressbookTests
                 ReturnToGroupsPage();
 
                 return this;
-            }
-
         }
 
+        public GroupHelper Modify(GroupData group, GroupData newData)
+        {
+            manager.Navigator.GoToGroupsPage();
+            SelectGroup(group.Id);
+            InintGroupModification();
+            FillGroupForm(newData);
+            SubmitGroupModification();
+            ReturnToGroupsPage();
+
+            return this;
+        }
 
         public GroupHelper Remove(int p)
         {
             manager.Navigator.GoToGroupsPage();
             SelectGroup(p);
+            RemoveGroup();
+            ReturnToGroupsPage();
+            return this;
+        }
+        public GroupHelper Remove(GroupData group)
+        {
+            manager.Navigator.GoToGroupsPage();
+
+            SelectGroup(group.Id);
             RemoveGroup();
             ReturnToGroupsPage();
             return this;
@@ -81,6 +98,11 @@ namespace WebAddressbookTests
         public GroupHelper SelectGroup(int index)
         {
             driver.FindElement(By.XPath("//div[@id='content']/form/span[" + (index+1) + "]/input")).Click();
+            return this;
+        }
+        public GroupHelper SelectGroup(string id)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]' and @value='"+id+"'])")).Click();
             return this;
         }
         public GroupHelper RemoveGroup()
@@ -145,5 +167,19 @@ namespace WebAddressbookTests
             manager.Navigator.GoToGroupsPage();
             return driver.FindElements(By.CssSelector("span.group")).Count;
         }
+
+        public GroupHelper CheckExistGroup()
+        { 
+            manager.Navigator.GoToGroupsPage();
+            if (!IsGroupCreate())
+            {
+                GroupData group = new GroupData("zzz");
+                    group.Header = "zzzz";
+                group.Footer = "zzzz";
+
+            }
+            return this;
+            }
+
     }
 }
