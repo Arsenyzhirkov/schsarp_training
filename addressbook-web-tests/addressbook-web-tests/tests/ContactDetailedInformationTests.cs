@@ -17,7 +17,15 @@ namespace WebAddressbookTests
             ContactData fromEdit = app.Contacts.GetContactInformationFromEditForm(0);
             ContactData fromDetails = app.Contacts.GetContactInformationFromDetails(0);
 
-            Assert.AreEqual(fromEdit, fromDetails);
+
+
+
+            Console.Out.Write(fromEdit.AllContactsInfo);
+
+            Console.Out.Write(fromDetails.AllContactsInfo);
+
+
+            Assert.AreEqual(fromEdit.AllContactsInfo, fromDetails.AllContactsInfo);
         }
     }
 }

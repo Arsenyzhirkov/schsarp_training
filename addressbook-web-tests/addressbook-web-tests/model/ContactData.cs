@@ -19,8 +19,8 @@ namespace WebAddressbookTests
 
         public ContactData(string firstname, string lastname)
         {
-            Firstname = firstname;
-            Lastname = lastname;
+        Firstname = firstname;
+        Lastname = lastname;
         }
 
         public ContactData()
@@ -121,7 +121,7 @@ namespace WebAddressbookTests
 
 
         private string GetFullName(string firstname, string lastname)
-            {
+        {
             string bufer = "";
             if (firstname != null && firstname != "")
             {
@@ -135,18 +135,18 @@ namespace WebAddressbookTests
 
         }
 
-        private string GetPhones(string homePhone, string MobilePhone, string WorkPhone)
+        private string GetPhones(string homePhone, string mobilePhone, string workPhone)
         {
             string bufer = "";
             if (homePhone != null && homePhone != "")
             {
                 bufer = bufer + "H: " + HomePhone + "\r\n";
             }
-            if (MobilePhone != null && MobilePhone != "")
+            if (mobilePhone != null && mobilePhone != "")
             {
                 bufer = bufer + "M: " + MobilePhone + "\r\n";
             }
-            if (WorkPhone != null && WorkPhone != "")
+            if (workPhone != null && workPhone != "")
             {
                 bufer = bufer + "W: " + WorkPhone + "\r\n";
             }
@@ -160,11 +160,11 @@ namespace WebAddressbookTests
 
             if (email != null && email != "")
             {
-                bufer = bufer +  email + "\r\n";
+                bufer = bufer + email + "\r\n";
             }
             if (email2 != null && email2 != "")
             {
-                bufer = bufer +  email2 + "\r\n";
+                bufer = bufer + email2 + "\r\n";
             }
             if (email3 != null && email3 != "")
             {
@@ -199,7 +199,7 @@ namespace WebAddressbookTests
             {
                 return "";
             }
-            return Regex.Replace(phone, "[ - () ]", "") +"\r\n";
+            return Regex.Replace(phone, "[ - () ]", "") + "\r\n";
         }
 
         public string AllEmails
@@ -231,7 +231,7 @@ namespace WebAddressbookTests
         }
 
 
-    private string CleanUpAllData (string allData)
+        private string CleanUpAllData(string allData)
         {
             if (allData == null || allData == "")
             {
