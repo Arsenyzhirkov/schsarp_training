@@ -263,7 +263,7 @@ namespace WebAddressbookTests
 
 
 
-        internal ContactData GetContactInformationFromEdit(int index)
+        public ContactData GetContactInformationFromEdit(int index)
         {
             manager.Navigator.GoToHomePage();
             InitContactModification(index);
@@ -321,7 +321,6 @@ namespace WebAddressbookTests
             string firstname = driver.FindElement(By.Name("firstname")).GetAttribute("value");
             string lastname = driver.FindElement(By.Name("lastname")).GetAttribute("value");
 
-
             string address = driver.FindElement(By.Name("address")).GetAttribute("value");
 
             string homePhone = driver.FindElement(By.Name("home")).GetAttribute("value");
@@ -334,6 +333,7 @@ namespace WebAddressbookTests
 
             return new ContactData(firstname, lastname)
             {
+                
                 Address = address,
                 HomePhone = homePhone,
                 MobilePhone = mobilePhone,
@@ -341,7 +341,7 @@ namespace WebAddressbookTests
 
                 Email = email,
                 Email2 = email2,
-                Email3 = email3
+                Email3 = email3,
             };
         }
         internal ContactData GetContactInformationFromDetails(int index)
