@@ -9,7 +9,7 @@ namespace mantis_tests
 {
     public class AuthTestBase : TestBase
     {
-        [OneTimeSetUp]
+        [TestFixtureSetUp]
         public void Auth()
         {
             AccountData account = new AccountData()

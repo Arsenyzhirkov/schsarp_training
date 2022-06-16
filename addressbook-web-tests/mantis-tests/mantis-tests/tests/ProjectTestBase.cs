@@ -9,7 +9,7 @@ namespace mantis_tests
 {
     public class ProjectManagementTestBase : AuthTestBase
     {
-        [OneTimeSetUp]
+        [TestFixtureSetUp]
         public void SetUpProjectManagement()
         {
             app.Navigator.OpenManageOverviewPage();

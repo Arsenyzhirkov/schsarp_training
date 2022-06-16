@@ -1,12 +1,10 @@
-﻿using System;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace mantis_tests
 {
@@ -16,17 +14,23 @@ namespace mantis_tests
         [Test]
         public void ProjectCreationTest()
         {
+            AccountData account = new AccountData()
+            {
+                Name = "administrator",
+                Password = "admin"
+            };
+
             ProjectData project = new ProjectData()
             {
                 Name = GenerateRandomString(15),
                 Description = GenerateRandomString(15)
             };
 
-            List<ProjectData> oldList = app.projectManagementHelper.GetProjectList();
+            List<ProjectData> oldList = app.API.GetProjectsList(account);
 
             app.projectManagementHelper.Create(project);
 
-            List<ProjectData> newList = app.projectManagementHelper.GetProjectList();
+            List<ProjectData> newList = app.API.GetProjectsList(account);
 
             oldList.Add(project);
             oldList.Sort();
@@ -34,6 +38,7 @@ namespace mantis_tests
 
             Assert.AreEqual(oldList.Count, newList.Count);
             Assert.AreEqual(oldList, newList);
+
             Console.Out.Write(oldList.Count);
             Console.Out.Write(newList.Count);
         }

@@ -17,12 +17,14 @@ namespace mantis_tests
             CreationProject();
             FillProjectForm(project);
             SubmitProjectCreation();
-            new WebDriverWait(driver, TimeSpan.FromSeconds(15))
+            new WebDriverWait(driver, TimeSpan.FromSeconds(20))
                 .Until(d => d.FindElements(By.XPath("(//table/tbody)[1]/tr")).Count > 0);
 
         }
         public void Remove(int index)
         {
+            manager.Navigator.OpenManageOverviewPage();
+            manager.Navigator.OpenProjectControlPage();
             InitProjectEdit(index);
             RemoveProject();
             Confirm();
@@ -43,7 +45,7 @@ namespace mantis_tests
             driver.FindElement(By.XPath($"(//table/tbody)[1]/tr[{index + 1}]/td/a")).Click();
         }
 
-        public List<ProjectData> GetProjectList()
+        public List<ProjectData> GetProjectsList()
         {
             List<ProjectData> projectList = new List<ProjectData>();
 

@@ -10,10 +10,10 @@ namespace mantis_tests
 {
     public class TestBase
     {
-        public static bool PERFORM_LONG_UI_CHECKS = false;
+       public static bool PERFORM_LONG_UI_CHECKS = false;
         protected ApplicationManager app;
 
-        [OneTimeSetUp] 
+        [TestFixtureSetUp]
         public void SetupApplicationManager()
         {
             app = ApplicationManager.GetInstance();
@@ -24,7 +24,7 @@ namespace mantis_tests
 
         public static string GenerateRandomString(int max)
         {
-
+            
             int l = Convert.ToInt32(rnd.NextDouble() * max);
             StringBuilder bulder = new StringBuilder();
             for (int i = 0; i < l; i++)

@@ -4,31 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
-
 
 namespace mantis_tests
 {
     public class ApplicationManager
     {
         protected IWebDriver driver;
-        protected string baseURL;
         protected string URL;
-
+        protected string baseURL;
         protected string mantis_bv;
         public NavigatorHelper Navigator { get; set; }
         public AuthHelper authHelper { get; set; }
         public ProjectManagementHelper projectManagementHelper { get; set; }
-        public RegistrationHelper Registration { get; set; }
+        public APIHelper API { get; set; }
 
-
-
-        public FtpHelper Ftp { get; set; }
-
-        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
+        private static ThreadLocal <ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
         private ApplicationManager()
         {
@@ -39,9 +32,11 @@ namespace mantis_tests
             Navigator = new NavigatorHelper(this, baseURL, mantis_bv);
             authHelper = new AuthHelper(this);
             projectManagementHelper = new ProjectManagementHelper(this);
+            API = new APIHelper(this);
         }
 
-         ~ApplicationManager()
+     
+        ~ApplicationManager()
         {
             try
             {
@@ -49,8 +44,11 @@ namespace mantis_tests
             }
             catch (Exception)
             {
+                // Ignore errors if unable to close the browser
             }
+
         }
+
         public static ApplicationManager GetInstance()
         {
             if(! app.IsValueCreated)
@@ -58,9 +56,11 @@ namespace mantis_tests
                 ApplicationManager newInstance = new ApplicationManager();
                 newInstance.Navigator.OpenHomePage();
                 app.Value = newInstance;
+                
             }
             return app.Value;
         }
+
         public IWebDriver Driver
         {
             get

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.2.32526.322
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mantis-tests", "mantis-tests\mantis-tests.csproj", "{74F477BF-BD41-4443-8939-12D9359FA658}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mantis-tests", "mantis-tests\mantis-tests.csproj", "{F69FC702-E0EF-414E-A2CE-4227C76F7BC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{74F477BF-BD41-4443-8939-12D9359FA658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74F477BF-BD41-4443-8939-12D9359FA658}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74F477BF-BD41-4443-8939-12D9359FA658}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74F477BF-BD41-4443-8939-12D9359FA658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F69FC702-E0EF-414E-A2CE-4227C76F7BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F69FC702-E0EF-414E-A2CE-4227C76F7BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F69FC702-E0EF-414E-A2CE-4227C76F7BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F69FC702-E0EF-414E-A2CE-4227C76F7BC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {577D6AEC-889A-4A0C-9DF7-855EED747856}
 	EndGlobalSection
 EndGlobal
