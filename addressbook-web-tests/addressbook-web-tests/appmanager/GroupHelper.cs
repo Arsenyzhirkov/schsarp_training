@@ -176,7 +176,7 @@ namespace WebAddressbookTests
                 GroupData group = new GroupData("zzz");
                     group.Header = "zzzz";
                 group.Footer = "zzzz";
-
+                Create(group);
             }
             return this;
             }

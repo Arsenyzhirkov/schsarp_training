@@ -389,12 +389,13 @@ namespace WebAddressbookTests
                 acceptNextAlert = true;
             }
         }
-        public ContactHelper ChectExistContact()
+        public ContactHelper CheckExistContact()
         {
             manager.Navigator.GoToHomePage();
             if (!IsElementPresent(By.Name("entry")))
             {
                 ContactData contact = new ContactData("zzzzz", "zzzzzz");
+                Create(contact);
             }
             return this;
         }
